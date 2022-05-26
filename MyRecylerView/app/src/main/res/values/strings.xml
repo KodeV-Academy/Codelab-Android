@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyRecylerView</string>
+    <string name="name_doctor">Nama Dokter</string>
+    <string name="specialist_doctor">Specialist</string>
+    <string name="experience_doctor">5 Tahun</string>
+    <string name="price_doctor">Rp25,000</string>
+    <string name="image_doctor">Gambar Dokter</string>
+</resources>

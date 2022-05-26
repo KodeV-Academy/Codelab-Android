@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyRetrofit</string>
+    <string name="game_image">Game Image</string>
+    <string name="_90">90</string>
+    <string name="list_game">List Game</string>
+    <string name="fullname">%s - %s</string>
+    <string name="to_user_activity">To User Activity</string>
+    <string name="list_user">List User</string>
+    <string name="add_user">Add User</string>
+    <string name="name">Name</string>
+    <string name="job">Job</string>
+    <string name="add">Add</string>
+</resources>
