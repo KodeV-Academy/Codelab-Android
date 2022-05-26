@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">KodeV Academy</string>
+    <string name="game">Game</string>
+    <string name="favorite">Favorite</string>
+    <string name="game_image">Image Game</string>
+    <string name="_90">90</string>
+    <string name="release_date">Release Date:</string>
+    <string name="release_date_data">17–09–2013</string>
+    <string name="genre">Genre:</string>
+    <string name="genre_data">Action, Adventure</string>
+    <string name="platform">Platform:</string>
+    <string name="platform_data">PC, Xbox Series S/X, PlayStation 3, PlayStation 4, PlayStation 5, Xbox 360, Xbox One</string>
+    <string name="share_text">Mainkan %s Sekarang Juga</string>
+    <string name="description">Description:</string>
+    <string name="description_data">Rockstar Games went bigger, since their previous installment of the series. You get the complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old fan favorite GTA San Andreas. 561 different vehicles (including every transport you can operate) and the amount is rising with every update. <br />\nSimultaneous storytelling from three unique perspectives: <br />\nFollow Michael, ex-criminal living his life of leisure away from the past, Franklin, a kid that seeks the better future, and Trevor, the exact past Michael is trying to run away from. <br />\nGTA Online will provide a lot of additional challenge even for the experienced players, coming fresh from the story mode. Now you will have other players around that can help you just as likely as ruin your mission. Every GTA mechanic up to date can be experienced by players through the unique customizable character, and community content paired with the leveling system tends to keep everyone busy and engaged.</string>
+    <string name="minimum">Minimum:</string>
+    <string name="recommended">Recommended:</string>
+</resources>
