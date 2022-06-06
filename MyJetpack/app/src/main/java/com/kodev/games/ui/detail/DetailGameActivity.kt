@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kodev.games.R
-import com.kodev.games.data.GameEntity
 import com.kodev.games.databinding.ActivityDetailGameBinding
 import com.kodev.games.utils.Support.convertHtmlTagToText
 import com.google.android.material.appbar.AppBarLayout

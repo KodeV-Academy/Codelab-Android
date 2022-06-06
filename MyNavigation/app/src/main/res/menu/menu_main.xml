@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_search"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search" />
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/menu_notification"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="Notification" />
+
+    <item
+        android:id="@+id/menu_favorite"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite" />
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/menu_person"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Person" />
+</menu>
