@@ -1,6 +1,6 @@
 package com.kodev.games.utils
 
-import com.kodev.games.data.source.local.entity.GameEntity
+import com.kodev.games.data.*
 
 object DataDummy {
 
@@ -18,6 +18,7 @@ object DataDummy {
                 "PC, Xbox Series S/X, PlayStation 3, PlayStation 4, PlayStation 5, Xbox 360, Xbox One",
                 "Action, Adventure",
                 "Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1, Windows Vista 64 Bit Service Pack 2* (*NVIDIA video card recommended if running Vista OS)Processor: Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5GHzMemory: 4 GB RAMGraphics: NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)Storage: 72 GB available spaceSound Card: 100% DirectX 10 compatibleAdditional Notes: Over time downloadable content and programming changes will change the system requirements for this game.  Please refer to your hardware manufacturer and www.rockstargames.com/support for current compatibility information. Some system components such as mobile chipsets, integrated, and AGP graphics cards may be incompatible. Unlisted specifications may not be supported by publisher.     Other requirements:  Installation and online play requires log-in to Rockstar Games Social Club (13+) network; internet connection required for activation, online play, and periodic entitlement verification; software installations required including Rockstar Games Social Club platform, DirectX , Chromium, and Microsoft Visual C++ 2008 sp1 Redistributable Package, and authentication software that recognizes certain hardware attributes for entitlement, digital rights management, system, and other support purposes.     SINGLE USE SERIAL CODE REGISTRATION VIA INTERNET REQUIRED; REGISTRATION IS LIMITED TO ONE ROCKSTAR GAMES SOCIAL CLUB ACCOUNT (13+) PER SERIAL CODE; ONLY ONE PC LOG-IN ALLOWED PER SOCIAL CLUB ACCOUNT AT ANY TIME; SERIAL CODE(S) ARE NON-TRANSFERABLE ONCE USED; SOCIAL CLUB ACCOUNTS ARE NON-TRANSFERABLE.  Partner Requirements:  Please check the terms of service of this site before purchasing this software.",
+                "OS: Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1Processor: Intel Core i5 3470 @ 3.2GHz (4 CPUs) / AMD X8 FX-8350 @ 4GHz (8 CPUs)Memory: 8 GB RAMGraphics: NVIDIA GTX 660 2GB / AMD HD 7870 2GBStorage: 72 GB available spaceSound Card: 100% DirectX 10",
             )
         )
 
@@ -39,6 +40,14 @@ object DataDummy {
                         "OS 64-bit Windows 7 or 64-bit Windows 8 (8.1)\n" +
                         "DirectX 11\n" +
                         "HDD Space 40 GB",
+                "Intel CPU Core i7 3770 3,4 GHz\n" +
+                        "AMD CPU AMD FX-8350 4 GHz\n" +
+                        "Nvidia GPU GeForce GTX 770\n" +
+                        "AMD GPU Radeon R9 290\n" +
+                        "RAM 8GB\n" +
+                        "OS 64-bit Windows 7 or 64-bit Windows 8 (8.1)\n" +
+                        "DirectX 11\n" +
+                        "HDD Space 40 GB"
             )
         )
 
@@ -53,6 +62,7 @@ object DataDummy {
                 "PC, Nintendo Switch, Xbox 360, PlayStation 3",
                 "Action, RPG",
                 "<strong>Minimum:</strong><br>\t<ul class=\\\"bb_ul\\\"><li><strong>OS:</strong> Windows 7/Vista/XP PC (32 or 64 bit)<br>\t</li><li><strong>Processor:</strong> Dual Core 2.0GHz or equivalent processor<br>\t</li><li><strong>Memory:</strong> 2GB System RAM<br>\t</li><li><strong>Hard Disk Space:</strong> 6GB free HDD Space<br>\t</li><li><strong>Video Card:</strong> Direct X 9.0c compliant video card with 512 MB of RAM<br>\t</li><li><strong>Sound:</strong> DirectX compatible sound card<br>\t</li></ul>",
+                "<strong>Recommended:</strong><br>\t<ul class=\\\"bb_ul\\\"><li><strong>Processor:</strong> Quad-core Intel or AMD CPU<br>\t</li><li><strong>Memory:</strong> 4GB System RAM<br>\t</li><li><strong>Video Card:</strong> DirectX 9.0c compatible NVIDIA or AMD ATI video card with 1GB of RAM (Nvidia GeForce GTX 260 or higher; ATI Radeon 4890 or higher)<br>\t</li></ul>"
             )
         )
 

@@ -1,8 +1,6 @@
 package com.kodev.games.data.source.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.kodev.games.data.source.remote.api.ApiConfig.getApiService
 import com.kodev.games.data.source.remote.response.ResponseGame
 import com.kodev.games.utils.JsonHelper
@@ -10,20 +8,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RemoteDataSource {
+class RemoteDataSource() {
 
     companion object {
         private const val TAG = "RemoteDataSource"
     }
 
-    fun getGames(): LiveData<ApiResponse<ResponseGame>> {
-        val responseGame = MutableLiveData<ApiResponse<ResponseGame>>()
+    fun getGames(callback: LoadGetGames) {
         val client = getApiService().getGames("d084045ca6164bbeb97021752a930416", "10")
         client.enqueue(object : Callback<ResponseGame> {
             override fun onResponse(call: Call<ResponseGame>, response: Response<ResponseGame>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        responseGame.value = ApiResponse.success(it)
+                        callback.onLoadGetGames(it)
                     }
                 } else {
                     Log.d(TAG, "onResponse: ${response.message()}")
@@ -34,6 +31,9 @@ class RemoteDataSource {
                 Log.d(TAG, "onFailure: ${t.localizedMessage}")
             }
         })
-        return responseGame
+    }
+
+    interface LoadGetGames {
+        fun onLoadGetGames(listGame: ResponseGame)
     }
 }
