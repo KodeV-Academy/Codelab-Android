@@ -41,7 +41,7 @@ class DetailGameActivity : AppCompatActivity() {
             this@DetailGameActivity.onBackPressed()
         }
 
-        binding.fabFavorite.setOnClickListener {
+        binding.fabButton.setOnClickListener {
             viewModel.updateGame(data, !isFavorite)
             populateFabButton(!isFavorite)
             if (isFavorite)
@@ -90,9 +90,9 @@ class DetailGameActivity : AppCompatActivity() {
 
     private fun populateFabButton(favorite: Boolean) {
         if (favorite)
-            binding.fabFavorite.setImageResource(R.drawable.ic_baseline_favorite)
+            binding.fabButton.setImageResource(R.drawable.ic_baseline_favorite)
         else
-            binding.fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_border)
+            binding.fabButton.setImageResource(R.drawable.ic_baseline_favorite_border)
     }
 
     companion object {

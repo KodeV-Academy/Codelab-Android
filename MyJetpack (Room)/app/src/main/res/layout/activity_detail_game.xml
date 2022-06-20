@@ -268,13 +268,12 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_favorite"
+        android:id="@+id/fab_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:contentDescription="@string/add_to_favorite"
-        android:src="@drawable/ic_baseline_favorite_selector"
+        android:src="@drawable/ic_baseline_favorite_border"
         app:backgroundTint="@color/colorSoftBlack"
         app:tint="@color/white" />
 

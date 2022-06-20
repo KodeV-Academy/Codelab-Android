@@ -1,6 +1,7 @@
 package com.kodev.games.data.source.local
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.kodev.games.data.source.local.entity.GameEntity
 import com.kodev.games.data.source.local.room.GamesDao
 
@@ -13,9 +14,9 @@ class LocalDataSource private constructor(private val gamesDao: GamesDao) {
             INSTANCE ?: LocalDataSource(gamesDao)
     }
 
-    fun getLocalGames(): LiveData<List<GameEntity>> = gamesDao.getLocalGames()
+    fun getLocalGames(): DataSource.Factory<Int, GameEntity> = gamesDao.getLocalGames()
 
-    fun getFavoriteGame(): LiveData<List<GameEntity>> = gamesDao.getFavoriteGame()
+    fun getFavoriteGame(): DataSource.Factory<Int, GameEntity> = gamesDao.getFavoriteGame()
 
     fun insertGame(listGame: List<GameEntity>) = gamesDao.insertGame(listGame)
 

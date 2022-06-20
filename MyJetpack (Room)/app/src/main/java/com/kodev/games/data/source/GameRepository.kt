@@ -1,6 +1,8 @@
 package com.kodev.games.data.source
 
 import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.kodev.games.data.source.local.LocalDataSource
 import com.kodev.games.data.source.local.entity.GameEntity
 import com.kodev.games.data.source.remote.ApiResponse
@@ -30,13 +32,18 @@ class GameRepository private constructor(
             }
     }
 
-    override fun getGames(): LiveData<Resource<List<GameEntity>>> {
-        return object : NetworkBoundResource<List<GameEntity>, ResponseGame>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<GameEntity>> {
-                return localDataSource.getLocalGames()
+    override fun getGames(): LiveData<Resource<PagedList<GameEntity>>> {
+        return object : NetworkBoundResource<PagedList<GameEntity>, ResponseGame>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<GameEntity>> {
+                val config = PagedList.Config.Builder()
+                    .setEnablePlaceholders(false)
+                    .setInitialLoadSizeHint(4)
+                    .setPageSize(4)
+                    .build()
+                return LivePagedListBuilder(localDataSource.getLocalGames(), config).build()
             }
 
-            override fun shouldFetch(data: List<GameEntity>?): Boolean {
+            override fun shouldFetch(data: PagedList<GameEntity>?): Boolean {
                 return data == null || data.isEmpty()
             }
 
@@ -82,8 +89,14 @@ class GameRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getFavoriteGame(): LiveData<List<GameEntity>> =
-        localDataSource.getFavoriteGame()
+    override fun getFavoriteGame(): LiveData<PagedList<GameEntity>> {
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(4)
+            .setPageSize(4)
+            .build()
+        return LivePagedListBuilder(localDataSource.getFavoriteGame(), config).build()
+    }
 
     override fun updateGame(game: GameEntity, newState: Boolean) =
         appExecutors.diskIO().execute { localDataSource.updateGame(game, newState) }

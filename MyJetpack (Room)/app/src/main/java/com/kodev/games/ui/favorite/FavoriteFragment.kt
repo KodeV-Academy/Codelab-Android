@@ -38,34 +38,18 @@ class FavoriteFragment : Fragment() {
 
         val favoriteAdapter = FavoriteAdapter()
         binding.rvFavorite.apply {
-            setHasFixedSize(true)
             adapter = favoriteAdapter
-        }
-
-        viewModel.getFavoriteGame().observe(viewLifecycleOwner) {
-            favoriteAdapter.setData(it)
-            binding.progressCircular.visibility = View.GONE
-        }
-
-        favoriteAdapter.onItemShareClick = {
-            val mimeType = "text/plain"
-            ShareCompat.IntentBuilder
-                .from(requireActivity())
-                .setType(mimeType)
-                .setChooserTitle("Mainkan Game ${it.name} Ini Sekarang.")
-                .setText(resources.getString(R.string.share_text, it.name))
-                .startChooser()
-        }
-
-        favoriteAdapter.onItemFavoriteClick = {
-            viewModel.updateGame(it, !it.favorite)
-            Snackbar.make(requireView(), "Berhasil Dihapus dari Favorit", Snackbar.LENGTH_SHORT).show()
         }
 
         favoriteAdapter.onItemClick = {
             val intent = Intent(requireContext(), DetailGameActivity::class.java)
             intent.putExtra(DetailGameActivity.EXTRA_DATA, it)
             requireActivity().startActivity(intent)
+        }
+
+        viewModel.getFavoriteGame().observe(viewLifecycleOwner) {
+            favoriteAdapter.setData(it)
+            binding.progressCircular.visibility = View.GONE
         }
     }
 }

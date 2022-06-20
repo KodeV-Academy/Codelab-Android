@@ -5,41 +5,78 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="OkHttpClient" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85860a09-f18d-44f2-8169-47c6b73b268a" name="Changes" comment="initial commit" />
+    <list default="true" id="4dcd0fe1-f558-498c-bdb2-7766ef578cfd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/androidTest/java/com/onedev/androidfundamental/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/java/com/onedev/androidfundamental/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/app/src/test/java/com/onedev/androidfundamental/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AndroidFundamental/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Paging)/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Paging)/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Paging)/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Paging)/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/GameDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/GameDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/GameRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/GameRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/local/LocalDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/local/LocalDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/local/room/GamesDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/data/source/local/room/GamesDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/detail/DetailGameActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/detail/DetailGameActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/favorite/FavoriteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/favorite/FavoriteFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/games/GameAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/games/GameAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/games/GameFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/games/GameFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/games/GameViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/java/com/kodev/games/ui/games/GameViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/res/layout/activity_detail_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyJetpack (Room)/app/src/main/res/layout/activity_detail_game.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\rwnhe\.android\avd\Pixel_2_API_24_N.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/apple/.android/avd/Pixel_2_API_32.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Object" />
-        <option value="layoutResourceFile" />
-        <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/MyBackgroundThread" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="29Q6bkZP8OmHhkqgiVIRYmC99o7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2Ah6xtlG2OWwxokrrTsPXvJm4fM" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -49,12 +86,11 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MyLiveDataWithApi" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="MyLiveDataWithAPI.app" />
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="KotlinFundamental.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -114,20 +150,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="85860a09-f18d-44f2-8169-47c6b73b268a" name="Changes" comment="" />
-      <created>1653033035675</created>
+      <changelist id="4dcd0fe1-f558-498c-bdb2-7766ef578cfd" name="Changes" comment="" />
+      <created>1655449719641</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1653033035675</updated>
+      <updated>1655449719641</updated>
     </task>
-    <task id="LOCAL-00001" summary="initial commit">
-      <created>1653036762242</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1653036762242</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,9 +168,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 package com.kodev.games.data.source.local.room
 
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 import com.kodev.games.data.source.local.entity.GameEntity
 
@@ -8,10 +8,10 @@ import com.kodev.games.data.source.local.entity.GameEntity
 interface GamesDao {
 
     @Query("SELECT * FROM tb_game")
-    fun getLocalGames(): LiveData<List<GameEntity>>
+    fun getLocalGames(): DataSource.Factory<Int, GameEntity>
 
     @Query("SELECT * FROM tb_game where favorite = 1")
-    fun getFavoriteGame(): LiveData<List<GameEntity>>
+    fun getFavoriteGame(): DataSource.Factory<Int, GameEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGame(courses: List<GameEntity>)
