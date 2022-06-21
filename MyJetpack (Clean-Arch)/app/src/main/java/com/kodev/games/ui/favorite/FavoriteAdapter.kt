@@ -1,34 +1,29 @@
 package com.kodev.games.ui.favorite
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kodev.games.R
-import com.kodev.games.core.data.source.local.entity.GameEntity
+import com.kodev.games.core.domain.model.Game
 import com.kodev.games.databinding.LayoutListGameFavoriteBinding
 import com.kodev.games.utils.Support.replaceArrayCode
 
-class FavoriteAdapter :
-    PagedListAdapter<GameEntity, FavoriteAdapter.FavoriteViewHolder>(DIFF_CALLBACK) {
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
-    var onItemShareClick: ((GameEntity) -> Unit)? = null
-    var onItemFavoriteClick: ((GameEntity) -> Unit)? = null
-    var onItemClick: ((GameEntity) -> Unit)? = null
+    private var listData = ArrayList<Game>()
+    var onItemClick: ((Game) -> Unit)? = null
+    var onItemShareClick: ((Game) -> Unit)? = null
+    var onItemFavoriteClick: ((Game) -> Unit)? = null
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GameEntity>() {
-            override fun areItemsTheSame(oldItem: GameEntity, newItem: GameEntity): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: GameEntity, newItem: GameEntity): Boolean {
-                return oldItem == newItem
-            }
-        }
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(newListData: List<Game>?) {
+        if (newListData == null) return
+        listData.clear()
+        listData.addAll(newListData)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
@@ -41,15 +36,12 @@ class FavoriteAdapter :
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
-        val game = getItem(position)
-        if (game != null) {
-            holder.bind(game)
-        }
+        holder.bind(listData[position])
     }
 
     inner class FavoriteViewHolder(private val binding: LayoutListGameFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: GameEntity) {
+        fun bind(data: Game) {
             binding.apply {
                 Glide.with(itemView.context)
                     .load(data.background_image)
@@ -78,4 +70,6 @@ class FavoriteAdapter :
             }
         }
     }
+
+    override fun getItemCount(): Int = listData.size
 }

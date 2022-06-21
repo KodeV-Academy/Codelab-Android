@@ -28,7 +28,11 @@ class GameRepository private constructor(
         @Volatile
         private var instance: GameRepository? = null
 
-        fun getInstance(remoteData: RemoteDataSource, localData: LocalDataSource, appExecutors: AppExecutors): GameRepository =
+        fun getInstance(
+            remoteData: RemoteDataSource,
+            localData: LocalDataSource,
+            appExecutors: AppExecutors
+        ): GameRepository =
             instance ?: synchronized(this) {
                 instance ?: GameRepository(remoteData, localData, appExecutors).apply {
                     instance = this
@@ -45,7 +49,7 @@ class GameRepository private constructor(
             }
 
             override fun shouldFetch(data: List<Game>?): Boolean {
-                return  data == null || data.isEmpty()
+                return data == null || data.isEmpty()
             }
 
             override fun createCall(): LiveData<ApiResponse<ResponseGame>> {
@@ -67,7 +71,8 @@ class GameRepository private constructor(
 
     override fun updateGame(game: Game, newState: Boolean) {
         val tourismEntity = DataMapper.mapDomainToEntity(game)
-        appExecutors.diskIO().execute { localDataSource.updateGame(tourismEntity, newState)
+        appExecutors.diskIO().execute {
+            localDataSource.updateGame(tourismEntity, newState)
         }
     }
 

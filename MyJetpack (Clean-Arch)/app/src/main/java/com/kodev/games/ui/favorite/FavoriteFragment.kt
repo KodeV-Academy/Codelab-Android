@@ -43,7 +43,7 @@ class FavoriteFragment : Fragment() {
         }
 
         viewModel.getFavoriteGame().observe(viewLifecycleOwner) {
-            favoriteAdapter.submitList(it)
+            favoriteAdapter.setData(it)
             binding.progressCircular.visibility = View.GONE
         }
 

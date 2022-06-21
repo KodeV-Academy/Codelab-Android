@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kodev.games.R
-import com.kodev.games.databinding.ActivityDetailGameBinding
-import com.kodev.games.utils.Support.convertHtmlTagToText
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
-import com.kodev.games.core.data.source.local.entity.GameEntity
+import com.kodev.games.R
+import com.kodev.games.core.domain.model.Game
+import com.kodev.games.databinding.ActivityDetailGameBinding
 import com.kodev.games.ui.games.GameViewModel
+import com.kodev.games.utils.Support.convertHtmlTagToText
 import com.kodev.games.utils.Support.replaceArrayCode
 import com.kodev.games.viewmodel.ViewModelFactory
 import kotlin.math.abs
@@ -20,7 +20,7 @@ import kotlin.math.abs
 class DetailGameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailGameBinding
-    private lateinit var data: GameEntity
+    private lateinit var data: Game
     private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
