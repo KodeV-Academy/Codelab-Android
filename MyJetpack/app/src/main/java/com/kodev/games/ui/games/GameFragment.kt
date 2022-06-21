@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kodev.games.viewmodel.ViewModelFactory
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
+import com.kodev.games.viewmodel.ViewModelFactory
 
 class GameFragment : Fragment() {
 
@@ -27,7 +27,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        val factory = ViewModelFactory.getInstance()
         val viewModel = ViewModelProvider(this, factory)[GameViewModel::class.java]
 
         val gameAdapter = GameAdapter()
