@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         btnStart.setOnClickListener {
             try {
                 for (i in 0..10) {
-                    Thread.sleep(500)
+                        Thread.sleep(500)
                     val percentage = i * 10
                     if (percentage == 100) {
                         tvStatus.setText(R.string.task_completed)

@@ -1,5 +1,6 @@
 package com.onedev.androidfundamental.recylerview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.onedev.androidfundamental.databinding.ActivityDetailBinding
@@ -17,5 +18,11 @@ class DoctorActivity : AppCompatActivity() {
         val doctorAdapter = DoctorAdapter()
         doctorAdapter.setListData(Data.generateDataDoctor())
         binding.rvDoctor.adapter = doctorAdapter
+
+        doctorAdapter.onItemClick = {
+            val intent = Intent(applicationContext, DetailDoctorActivity::class.java)
+            intent.putExtra(DetailDoctorActivity.EXTRA_DATA, it)
+            startActivity(intent)
+        }
     }
 }

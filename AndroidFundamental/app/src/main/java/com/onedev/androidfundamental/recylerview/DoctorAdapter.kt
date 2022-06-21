@@ -10,6 +10,7 @@ import com.onedev.androidfundamental.databinding.LayoutListDoctorBinding
 class DoctorAdapter : RecyclerView.Adapter<DoctorAdapter.ListViewHolder>() {
 
     private val listData = ArrayList<Data.Doctor>()
+    var onItemClick: ((Data.Doctor) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun setListData(list: List<Data.Doctor>) {
@@ -28,6 +29,10 @@ class DoctorAdapter : RecyclerView.Adapter<DoctorAdapter.ListViewHolder>() {
             binding.tvSpecialist.text = data.specialist
             binding.tvExperience.text = data.experience
             binding.tvPrice.text = data.price
+
+            itemView.setOnClickListener {
+                onItemClick?.invoke(data)
+            }
         }
     }
 

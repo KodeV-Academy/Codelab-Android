@@ -36,10 +36,7 @@
         <entry key="..\:/Users/rwnhe/Downloads/a129-jetpack-labs-master/a129-jetpack-labs-master/Project Academy/01. Starter/kotlin/app/src/main/res/layout/fragment_game.xml" value="0.3625" />
         <entry key="..\:/Users/rwnhe/Downloads/a129-jetpack-labs-master/a129-jetpack-labs-master/Project Academy/01. Starter/kotlin/app/src/main/res/layout/layout_list_game.xml" value="0.3625" />
         <entry key="..\:/Users/rwnhe/Downloads/a129-jetpack-labs-master/a129-jetpack-labs-master/Project Academy/01. Starter/kotlin/app/src/main/res/layout/layout_list_game_favorite.xml" value="0.3625" />
-        <entry key="app/src/main/res/layout/activity_detail_game.xml" value="0.19" />
-        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.27794871794871795" />
-        <entry key="app/src/main/res/layout/fragment_game.xml" value="0.24947916666666667" />
-        <entry key="app/src/main/res/layout/layout_list_game_favorite.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/fragment_game.xml" value="0.15833333333333333" />
       </map>
     </option>
   </component>

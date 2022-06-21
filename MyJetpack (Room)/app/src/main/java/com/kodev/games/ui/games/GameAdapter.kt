@@ -1,30 +1,28 @@
 package com.kodev.games.ui.games
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kodev.games.R
 import com.kodev.games.data.source.local.entity.GameEntity
+import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.LayoutListGameBinding
 import com.kodev.games.utils.Support.replaceArrayCode
+import java.util.*
 
-class GameAdapter : PagedListAdapter<GameEntity, GameAdapter.GameViewHolder>(DIFF_CALLBACK) {
+class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+    private var listGame = ArrayList<GameEntity>()
     var onItemClick: ((GameEntity) -> Unit)? = null
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GameEntity>() {
-            override fun areItemsTheSame(oldItem: GameEntity, newItem: GameEntity): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: GameEntity, newItem: GameEntity): Boolean {
-                return oldItem == newItem
-            }
-        }
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(games: List<GameEntity>?) {
+        if (games == null) return
+        this.listGame.clear()
+        this.listGame.addAll(games)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
@@ -33,11 +31,12 @@ class GameAdapter : PagedListAdapter<GameEntity, GameAdapter.GameViewHolder>(DIF
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        val game = getItem(position)
-        if (game != null) {
-            holder.bind(game)
-        }
+        val course = listGame[position]
+        holder.bind(course)
     }
+
+    override fun getItemCount(): Int = listGame.size
+
 
     inner class GameViewHolder(private val binding: LayoutListGameBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: GameEntity) {

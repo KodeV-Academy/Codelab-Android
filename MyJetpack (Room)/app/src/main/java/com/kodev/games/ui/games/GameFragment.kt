@@ -44,8 +44,9 @@ class GameFragment : Fragment() {
                     Status.SUCCESS -> {
                         binding.progressCircular.visibility = View.GONE
                         response.data?.let {
-                            gameAdapter.submitList(it)
+                            gameAdapter.setData(it)
                         }
+
                     }
                     Status.ERROR -> {
                         binding.progressCircular.visibility = View.GONE
