@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kodev.games.R
-import com.kodev.games.data.GameEntity
 import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.LayoutListGameBinding
-import java.util.*
 
 class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
     private var listGame = ArrayList<DataGame>()
@@ -48,14 +46,8 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
                 tvTitleGame.text = data.name
                 tvRateGame.text = data.rating.toString()
                 tvReleaseDate.text = data.released
-
-                for (i in data.genres) {
-                    tvGenreGame.text = i.name
-                }
-
-                for (i in data.platforms) {
-                    tvPlatformGame.text = i.platform.name
-                }
+                tvGenreGame.text = data.genres.toString()
+                tvPlatformGame.text = data.platforms.toString()
 
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)

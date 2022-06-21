@@ -5,12 +5,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.appbar.AppBarLayout
 import com.kodev.games.R
 import com.kodev.games.data.GameEntity
 import com.kodev.games.databinding.ActivityDetailGameBinding
-import com.kodev.games.utils.Support.convertHtmlTagToText
-import com.google.android.material.appbar.AppBarLayout
-import com.kodev.games.data.source.remote.response.DataGame
 import kotlin.math.abs
 
 class DetailGameActivity : AppCompatActivity() {
@@ -23,10 +21,6 @@ class DetailGameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.toolbar.setNavigationOnClickListener {
-            this@DetailGameActivity.onBackPressed()
-        }
-
-        binding.imgButtonBack.setOnClickListener {
             this@DetailGameActivity.onBackPressed()
         }
 
@@ -47,7 +41,7 @@ class DetailGameActivity : AppCompatActivity() {
     }
 
     private fun populateView() {
-        val data = intent.getParcelableExtra<DataGame>(EXTRA_DATA)
+        val data = intent.getParcelableExtra<GameEntity>(EXTRA_DATA)
         if (data != null) {
             binding.apply {
                 Glide.with(this@DetailGameActivity)
@@ -57,18 +51,10 @@ class DetailGameActivity : AppCompatActivity() {
 
                 toolbar.title = data.name
                 tvTitleGame.text = data.name
-                tvRateGame.text = data.rating.toString()
+                tvRateGame.text = data.rating
                 tvReleaseDate.text = data.released
-                for (i in data.genres) {
-                    tvGenreGame.text = i.name
-                }
-
-                for (i in data.platforms) {
-                    tvPlatformGame.text = i.platform.name
-                }
-
-                tvMinimumGame.convertHtmlTagToText(data.platforms[0].requirements_en?.minimum.toString())
-                tvRecommendedGame.convertHtmlTagToText(data.platforms[0].requirements_en?.recommended.toString())
+                tvGenreGame.text = data.genres
+                tvPlatformGame.text = data.platforms
             }
         }
     }

@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.kodev.games.viewmodel.ViewModelFactory
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
-import com.kodev.games.utils.DataDummy
 
 class GameFragment : Fragment() {
 
@@ -27,14 +27,14 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val games = DataDummy.generateDataGames()
-        val gameAdapter = GameAdapter()
-        gameAdapter.setData(games)
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        val viewModel = ViewModelProvider(this, factory)[GameViewModel::class.java]
 
-        binding.rvGame.apply {
-            setHasFixedSize(true)
-            adapter = gameAdapter
+        val gameAdapter = GameAdapter()
+        viewModel.getGames().observe(viewLifecycleOwner) {
+            gameAdapter.setData(it.results)
         }
+        binding.rvGame.adapter = gameAdapter
 
         gameAdapter.onItemClick = {
             val intent = Intent(requireContext(), DetailGameActivity::class.java)
