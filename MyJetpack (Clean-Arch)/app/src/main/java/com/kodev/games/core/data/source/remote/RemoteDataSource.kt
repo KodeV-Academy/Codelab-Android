@@ -22,7 +22,7 @@ class RemoteDataSource() {
             override fun onResponse(call: Call<ResponseGame>, response: Response<ResponseGame>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        responseGame.value = ApiResponse.success(it)
+                        responseGame.value = ApiResponse.Success(it)
                     }
                 } else {
                     Log.d(TAG, "onResponse: ${response.message()}")

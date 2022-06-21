@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.kodev.games.core.data.source.Resource
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
 import com.kodev.games.viewmodel.ViewModelFactory
-import com.kodev.games.vo.Status
 
 class GameFragment : Fragment() {
 
@@ -35,18 +35,18 @@ class GameFragment : Fragment() {
         val gameAdapter = GameAdapter()
         viewModel.getGames().observe(viewLifecycleOwner) { response ->
             if (response != null) {
-                when (response.status) {
-                    Status.LOADING -> {
+                when (response) {
+                    is Resource.Loading -> {
                         binding.progressCircular.visibility = View.VISIBLE
                     }
-                    Status.SUCCESS -> {
+                    is Resource.Success -> {
                         binding.progressCircular.visibility = View.GONE
                         response.data?.let {
                             gameAdapter.setData(it)
                         }
 
                     }
-                    Status.ERROR -> {
+                    is Resource.Error -> {
                         binding.progressCircular.visibility = View.GONE
                         Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
                     }
