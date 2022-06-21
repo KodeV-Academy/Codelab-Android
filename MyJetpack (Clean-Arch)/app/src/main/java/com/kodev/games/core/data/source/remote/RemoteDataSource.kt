@@ -5,25 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kodev.games.core.data.source.remote.api.ApiConfig.getApiService
 import com.kodev.games.core.data.source.remote.response.ResponseGame
-import com.kodev.games.utils.JsonHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
+class RemoteDataSource() {
 
     companion object {
         private const val TAG = "RemoteDataSource"
-
-        @Volatile
-        private var instance: RemoteDataSource? = null
-
-        fun getInstance(helper: JsonHelper): RemoteDataSource =
-            instance ?: synchronized(this) {
-                instance ?: RemoteDataSource(helper).apply {
-                    instance = this
-                }
-            }
     }
 
     fun getGames(): LiveData<ApiResponse<ResponseGame>> {

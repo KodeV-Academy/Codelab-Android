@@ -2,27 +2,22 @@ package com.kodev.games.core.data.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.kodev.games.core.data.source.local.LocalDataSource
-import com.kodev.games.core.data.source.local.entity.GameEntity
 import com.kodev.games.core.data.source.remote.ApiResponse
 import com.kodev.games.core.data.source.remote.RemoteDataSource
-import com.kodev.games.core.data.source.remote.response.DataGame
 import com.kodev.games.core.data.source.remote.response.ResponseGame
 import com.kodev.games.core.domain.model.Game
+import com.kodev.games.core.domain.repository.IGameRepository
 import com.kodev.games.utils.AppExecutors
 import com.kodev.games.utils.DataMapper
 import com.kodev.games.utils.DataMapper.mapResponseToEntities
-import com.kodev.games.utils.Support.replaceArrayCode
-import com.kodev.games.vo.Resource
 
 class GameRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) :
-    GameDataSource {
+    IGameRepository {
 
     companion object {
         @Volatile

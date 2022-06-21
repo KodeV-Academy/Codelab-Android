@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kodev.games.R
 import com.kodev.games.databinding.ActivityHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kodev.games.utils.JsonHelper
 
 class HomeActivity : AppCompatActivity() {
 

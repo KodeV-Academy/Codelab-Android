@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kodev.games.data.source.GameRepository
 import com.kodev.games.di.Injection
+import com.kodev.games.ui.detail.DetailGameViewModel
+import com.kodev.games.ui.favorite.FavoriteViewModel
 import com.kodev.games.ui.games.GameViewModel
 
 class ViewModelFactory private constructor(private val gameRepository: GameRepository) :
@@ -24,9 +26,15 @@ class ViewModelFactory private constructor(private val gameRepository: GameRepos
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        when {
+        return when {
             modelClass.isAssignableFrom(GameViewModel::class.java) -> {
-                return GameViewModel(gameRepository) as T
+                GameViewModel(gameRepository) as T
+            }
+            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
+                FavoriteViewModel(gameRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailGameViewModel::class.java) -> {
+                DetailGameViewModel(gameRepository) as T
             }
             else -> throw Throwable("Unkown ViewModel Class: " + modelClass.name)
         }

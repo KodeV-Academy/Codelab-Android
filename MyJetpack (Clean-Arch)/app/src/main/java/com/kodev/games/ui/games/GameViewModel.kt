@@ -1,11 +1,11 @@
 package com.kodev.games.ui.games
 
 import androidx.lifecycle.ViewModel
-import com.kodev.games.core.data.source.GameRepository
 import com.kodev.games.core.domain.model.Game
+import com.kodev.games.core.domain.usecase.GameUseCase
 
-class GameViewModel(private val gameRepository: GameRepository): ViewModel() {
-    fun getGames() = gameRepository.getGames()
-    fun getFavoriteGame() = gameRepository.getFavoriteGame()
-    fun updateGame(game: Game, newState: Boolean) = gameRepository.updateGame(game, newState)
+class GameViewModel(private val gameUseCase: GameUseCase) : ViewModel() {
+    fun getGames() = gameUseCase.getGames()
+    fun getFavoriteGame() = gameUseCase.getFavoriteGame()
+    fun updateGame(game: Game, newState: Boolean) = gameUseCase.updateGame(game, newState)
 }

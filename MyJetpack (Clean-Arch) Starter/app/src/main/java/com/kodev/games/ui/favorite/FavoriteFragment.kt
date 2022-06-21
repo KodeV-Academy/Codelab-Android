@@ -12,7 +12,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.kodev.games.R
 import com.kodev.games.databinding.FragmentFavoriteBinding
 import com.kodev.games.ui.detail.DetailGameActivity
-import com.kodev.games.ui.games.GameViewModel
 import com.kodev.games.viewmodel.ViewModelFactory
 
 class FavoriteFragment : Fragment() {
@@ -31,7 +30,7 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val factory = ViewModelFactory.getInstance(requireActivity())
-        val viewModel = ViewModelProvider(this@FavoriteFragment, factory)[GameViewModel::class.java]
+        val viewModel = ViewModelProvider(this@FavoriteFragment, factory)[FavoriteViewModel::class.java]
 
         val favoriteAdapter = FavoriteAdapter()
         binding.rvFavorite.apply {
