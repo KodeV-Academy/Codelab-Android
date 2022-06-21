@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kodev.games.R
 import com.kodev.games.databinding.ActivityHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kodev.games.utils.JsonHelper
 
 class HomeActivity : AppCompatActivity() {
 
@@ -23,10 +22,6 @@ class HomeActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
-
-        val jsonHelper = JsonHelper(this@HomeActivity)
-        val response = jsonHelper.loadGame()
-        Log.d("jsonHelper", "onCreate: $response")
     }
 
     companion object {
