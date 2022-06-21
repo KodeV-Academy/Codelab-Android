@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kodev.games.R
-import com.kodev.games.data.source.local.entity.GameEntity
+import com.kodev.games.core.data.source.local.entity.GameEntity
 import com.kodev.games.databinding.LayoutListGameBinding
 import com.kodev.games.utils.Support.replaceArrayCode
 

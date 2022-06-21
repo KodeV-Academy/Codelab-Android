@@ -1,7 +1,7 @@
 package com.kodev.games.utils
 
 import android.content.Context
-import com.kodev.games.data.source.remote.response.*
+import com.kodev.games.core.data.source.remote.response.*
 import org.json.JSONException
 import org.json.JSONObject
 

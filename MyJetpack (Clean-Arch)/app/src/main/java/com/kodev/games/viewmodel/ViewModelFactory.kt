@@ -3,8 +3,8 @@ package com.kodev.games.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kodev.games.data.source.GameRepository
-import com.kodev.games.di.Injection
+import com.kodev.games.core.data.source.GameRepository
+import com.kodev.games.core.di.Injection
 import com.kodev.games.ui.games.GameViewModel
 
 class ViewModelFactory private constructor(private val gameRepository: GameRepository) :

@@ -3,7 +3,6 @@ package com.kodev.games.ui.detail
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -12,8 +11,7 @@ import com.kodev.games.databinding.ActivityDetailGameBinding
 import com.kodev.games.utils.Support.convertHtmlTagToText
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
-import com.kodev.games.data.source.local.entity.GameEntity
-import com.kodev.games.data.source.remote.response.DataGame
+import com.kodev.games.core.data.source.local.entity.GameEntity
 import com.kodev.games.ui.games.GameViewModel
 import com.kodev.games.utils.Support.replaceArrayCode
 import com.kodev.games.viewmodel.ViewModelFactory

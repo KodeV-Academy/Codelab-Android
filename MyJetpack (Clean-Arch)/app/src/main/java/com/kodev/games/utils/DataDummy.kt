@@ -1,6 +1,6 @@
 package com.kodev.games.utils
 
-import com.kodev.games.data.source.local.entity.GameEntity
+import com.kodev.games.core.data.source.local.entity.GameEntity
 
 object DataDummy {
 

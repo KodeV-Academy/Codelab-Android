@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kodev.games.data.source.local.entity.GameEntity
-import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
 import com.kodev.games.viewmodel.ViewModelFactory
