@@ -1,5 +1,6 @@
 package com.kodev.games.ui.games
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,10 +14,12 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
     private var listGame = ArrayList<GameEntity>()
     var onItemClick: ((GameEntity) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(games: List<GameEntity>?) {
         if (games == null) return
         this.listGame.clear()
         this.listGame.addAll(games)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
