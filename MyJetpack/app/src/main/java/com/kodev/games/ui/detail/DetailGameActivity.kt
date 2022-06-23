@@ -8,6 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.kodev.games.R
 import com.kodev.games.data.GameEntity
+import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.ActivityDetailGameBinding
 import kotlin.math.abs
 
@@ -41,7 +42,7 @@ class DetailGameActivity : AppCompatActivity() {
     }
 
     private fun populateView() {
-        val data = intent.getParcelableExtra<GameEntity>(EXTRA_DATA)
+        val data = intent.getParcelableExtra<DataGame>(EXTRA_DATA)
         if (data != null) {
             binding.apply {
                 Glide.with(this@DetailGameActivity)
@@ -51,10 +52,10 @@ class DetailGameActivity : AppCompatActivity() {
 
                 toolbar.title = data.name
                 tvTitleGame.text = data.name
-                tvRateGame.text = data.rating
+                tvRateGame.text = data.rating.toString()
                 tvReleaseDate.text = data.released
-                tvGenreGame.text = data.genres
-                tvPlatformGame.text = data.platforms
+                tvGenreGame.text = data.genres.toString()
+                tvPlatformGame.text = data.platforms.toString()
             }
         }
     }
