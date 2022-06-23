@@ -8,6 +8,7 @@ import com.kodev.games.data.source.remote.RemoteDataSource
 import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.data.source.remote.response.ResponseGame
 import com.kodev.games.utils.AppExecutors
+import com.kodev.games.utils.DataMapper.mapResponseToEntity
 import com.kodev.games.utils.Support.replaceArrayCode
 import com.kodev.games.vo.Resource
 
@@ -45,38 +46,7 @@ class GameRepository private constructor(
             }
 
             override fun saveCallResult(data: ResponseGame) {
-                val listGame = ArrayList<GameEntity>()
-                for (i in data.results) {
-                    val listPlatform = ArrayList<String>()
-                    val listGenre = ArrayList<String>()
-                    var recommended = ""
-                    var minimum = ""
-
-                    i.platforms.map {
-                        if (it.platform.name == "PC") {
-                            minimum = it.requirements_en?.minimum.toString()
-                            recommended = it.requirements_en?.recommended.toString()
-                        }
-                        listPlatform.add(it.platform.name)
-                    }
-
-                    i.genres.map {
-                        listGenre.add(it.name)
-                    }
-
-                    val game = GameEntity(
-                        i.id,
-                        i.name,
-                        i.released,
-                        i.background_image,
-                        i.rating.toString(),
-                        replaceArrayCode(listPlatform.toString()),
-                        replaceArrayCode(listGenre.toString()),
-                        minimum,
-                        recommended)
-
-                    listGame.add(game)
-                }
+                val listGame = mapResponseToEntity(data)
                 localDataSource.insertGame(listGame)
             }
         }.asLiveData()
