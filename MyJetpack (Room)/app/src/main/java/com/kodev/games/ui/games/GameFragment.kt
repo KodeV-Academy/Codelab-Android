@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kodev.games.data.source.local.entity.GameEntity
-import com.kodev.games.data.source.remote.response.DataGame
+import com.kodev.games.data.source.Resource
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
 import com.kodev.games.viewmodel.ViewModelFactory
-import com.kodev.games.vo.Status
 
 class GameFragment : Fragment() {
 
@@ -31,35 +29,31 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        val viewModel = ViewModelProvider(this@GameFragment, factory)[GameViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(requireContext())
+        val viewModel = ViewModelProvider(this, factory)[GameViewModel::class.java]
 
         val gameAdapter = GameAdapter()
         viewModel.getGames().observe(viewLifecycleOwner) { response ->
             if (response != null) {
-                when (response.status) {
-                    Status.LOADING -> {
+                when (response) {
+                    is Resource.Loading -> {
                         binding.progressCircular.visibility = View.VISIBLE
                     }
-                    Status.SUCCESS -> {
+                    is Resource.Success -> {
                         binding.progressCircular.visibility = View.GONE
                         response.data?.let {
                             gameAdapter.setData(it)
                         }
-
                     }
-                    Status.ERROR -> {
+                    is Resource.Error -> {
                         binding.progressCircular.visibility = View.GONE
-                        Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Terjadi Kesalahan", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
 
-        binding.rvGame.apply {
-            setHasFixedSize(true)
-            adapter = gameAdapter
-        }
+        binding.rvGame.adapter = gameAdapter
 
         gameAdapter.onItemClick = {
             val intent = Intent(requireContext(), DetailGameActivity::class.java)

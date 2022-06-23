@@ -1,11 +1,12 @@
 package com.kodev.games.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.tabs.TabLayoutMediator
 import com.kodev.games.R
 import com.kodev.games.databinding.ActivityHomeBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeActivity : AppCompatActivity() {
 

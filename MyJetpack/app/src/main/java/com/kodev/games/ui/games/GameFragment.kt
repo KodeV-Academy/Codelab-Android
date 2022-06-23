@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.kodev.games.data.source.Resource
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
 import com.kodev.games.viewmodel.ViewModelFactory
@@ -27,13 +29,30 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this, factory)[GameViewModel::class.java]
 
         val gameAdapter = GameAdapter()
-        viewModel.getGames().observe(viewLifecycleOwner) {
-            gameAdapter.setData(it.results)
+        viewModel.getGames().observe(viewLifecycleOwner) { response ->
+            if (response != null) {
+                when (response) {
+                    is Resource.Loading -> {
+                        binding.progressCircular.visibility = View.VISIBLE
+                    }
+                    is Resource.Success -> {
+                        binding.progressCircular.visibility = View.GONE
+                        response.data?.let {
+                            gameAdapter.setData(it)
+                        }
+                    }
+                    is Resource.Error -> {
+                        binding.progressCircular.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Terjadi Kesalahan", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
+
         binding.rvGame.adapter = gameAdapter
 
         gameAdapter.onItemClick = {

@@ -1,19 +1,14 @@
 package com.kodev.games.ui.favorite
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import com.kodev.games.R
 import com.kodev.games.databinding.FragmentFavoriteBinding
-import com.kodev.games.ui.detail.DetailGameActivity
-import com.kodev.games.ui.games.GameViewModel
-import com.kodev.games.viewmodel.ViewModelFactory
+import com.kodev.games.utils.DataDummy
 
 class FavoriteFragment : Fragment() {
 
@@ -30,18 +25,13 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        val viewModel = ViewModelProvider(this@FavoriteFragment, factory)[GameViewModel::class.java]
-
+        val games = DataDummy.generateDataGames()
         val favoriteAdapter = FavoriteAdapter()
+        favoriteAdapter.setData(games)
+
         binding.rvFavorite.apply {
             setHasFixedSize(true)
             adapter = favoriteAdapter
-        }
-
-        viewModel.getFavoriteGame().observe(viewLifecycleOwner) {
-            favoriteAdapter.setData(it)
-            binding.progressCircular.visibility = View.GONE
         }
 
         favoriteAdapter.onItemShareClick = {
@@ -49,20 +39,9 @@ class FavoriteFragment : Fragment() {
             ShareCompat.IntentBuilder
                 .from(requireActivity())
                 .setType(mimeType)
-                .setChooserTitle("Mainkan Game ${it.name} Ini Sekarang.")
+                .setChooserTitle("Bagikan Game Ini Sekarang.")
                 .setText(resources.getString(R.string.share_text, it.name))
                 .startChooser()
-        }
-
-        favoriteAdapter.onItemFavoriteClick = {
-            viewModel.updateGame(it, !it.favorite)
-            Snackbar.make(requireView(), "Berhasil Dihapus dari Favorit", Snackbar.LENGTH_SHORT).show()
-        }
-
-        favoriteAdapter.onItemClick = {
-            val intent = Intent(requireContext(), DetailGameActivity::class.java)
-            intent.putExtra(DetailGameActivity.EXTRA_DATA, it)
-            requireActivity().startActivity(intent)
         }
     }
 }

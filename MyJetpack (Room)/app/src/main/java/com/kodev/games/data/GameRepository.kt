@@ -1,16 +1,15 @@
-package com.kodev.games.data.source
+package com.kodev.games.data
 
 import androidx.lifecycle.LiveData
+import com.kodev.games.data.source.NetworkBoundResource
+import com.kodev.games.data.source.Resource
 import com.kodev.games.data.source.local.LocalDataSource
 import com.kodev.games.data.source.local.entity.GameEntity
 import com.kodev.games.data.source.remote.ApiResponse
 import com.kodev.games.data.source.remote.RemoteDataSource
-import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.data.source.remote.response.ResponseGame
 import com.kodev.games.utils.AppExecutors
-import com.kodev.games.utils.DataMapper.mapResponseToEntity
-import com.kodev.games.utils.Support.replaceArrayCode
-import com.kodev.games.vo.Resource
+import com.kodev.games.utils.DataMapper
 
 class GameRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
@@ -22,12 +21,17 @@ class GameRepository private constructor(
     companion object {
         @Volatile
         private var instance: GameRepository? = null
-
-        fun getInstance(remoteData: RemoteDataSource, localData: LocalDataSource, appExecutors: AppExecutors): GameRepository =
+        fun getInstance(
+            remoteDataSource: RemoteDataSource,
+            localDataSource: LocalDataSource,
+            appExecutors: AppExecutors
+        ): GameRepository =
             instance ?: synchronized(this) {
-                instance ?: GameRepository(remoteData, localData, appExecutors).apply {
-                    instance = this
-                }
+                instance ?: GameRepository(
+                    remoteDataSource,
+                    localDataSource,
+                    appExecutors
+                ).apply { instance = this }
             }
     }
 
@@ -46,16 +50,19 @@ class GameRepository private constructor(
             }
 
             override fun saveCallResult(data: ResponseGame) {
-                val listGame = mapResponseToEntity(data)
-                localDataSource.insertGame(listGame)
+                val listGame = DataMapper.mapResponseToEntity(data)
+                return localDataSource.insertGame(listGame)
             }
         }.asLiveData()
     }
 
-    override fun getFavoriteGame(): LiveData<List<GameEntity>> =
-        localDataSource.getFavoriteGame()
+    override fun getFavoriteGame(): LiveData<List<GameEntity>> {
+        return localDataSource.getFavoriteGame()
+    }
 
-    override fun updateGame(game: GameEntity, newState: Boolean) =
-        appExecutors.diskIO().execute { localDataSource.updateGame(game, newState) }
-
+    override fun updateGame(game: GameEntity, newState: Boolean) {
+        appExecutors.diskIO().execute {
+            localDataSource.updateGame(game, newState)
+        }
+    }
 }

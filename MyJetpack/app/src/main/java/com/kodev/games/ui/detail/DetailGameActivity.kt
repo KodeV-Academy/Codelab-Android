@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.kodev.games.R
-import com.kodev.games.data.GameEntity
 import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.ActivityDetailGameBinding
 import kotlin.math.abs

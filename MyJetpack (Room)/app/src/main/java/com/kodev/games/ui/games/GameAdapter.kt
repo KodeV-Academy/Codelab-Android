@@ -10,8 +10,6 @@ import com.kodev.games.R
 import com.kodev.games.data.source.local.entity.GameEntity
 import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.LayoutListGameBinding
-import com.kodev.games.utils.Support.replaceArrayCode
-import java.util.*
 
 class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
     private var listGame = ArrayList<GameEntity>()
@@ -49,8 +47,8 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
                 tvTitleGame.text = data.name
                 tvRateGame.text = data.rating
                 tvReleaseDate.text = data.released
-                tvGenreGame.text = replaceArrayCode(data.genres)
-                tvPlatformGame.text = replaceArrayCode(data.platforms)
+                tvGenreGame.text = data.genres
+                tvPlatformGame.text = data.platforms
 
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)

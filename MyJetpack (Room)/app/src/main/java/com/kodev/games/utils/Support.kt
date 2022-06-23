@@ -11,8 +11,4 @@ object Support {
         } else
             this.text = Html.fromHtml(text)
     }
-
-    fun replaceArrayCode(text: String) : String{
-        return text.replace("[", "").replace("]", "")
-    }
 }

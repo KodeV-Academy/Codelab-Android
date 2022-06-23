@@ -7,15 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kodev.games.R
+import com.kodev.games.data.source.local.entity.GameEntity
 import com.kodev.games.data.source.remote.response.DataGame
 import com.kodev.games.databinding.LayoutListGameBinding
 
 class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
-    private var listGame = ArrayList<DataGame>()
-    var onItemClick: ((DataGame) -> Unit)? = null
+    private var listGame = ArrayList<GameEntity>()
+    var onItemClick: ((GameEntity) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(games: List<DataGame>?) {
+    fun setData(games: List<GameEntity>?) {
         if (games == null) return
         this.listGame.clear()
         this.listGame.addAll(games)
@@ -36,7 +37,7 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
 
 
     inner class GameViewHolder(private val binding: LayoutListGameBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: DataGame) {
+        fun bind(data: GameEntity) {
             binding.apply {
                 Glide.with(itemView.context)
                     .load(data.background_image)
@@ -44,10 +45,10 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
                         .error(R.drawable.ic_error))
                     .into(imgGames)
                 tvTitleGame.text = data.name
-                tvRateGame.text = data.rating.toString()
+                tvRateGame.text = data.rating
                 tvReleaseDate.text = data.released
-                tvGenreGame.text = data.genres.toString()
-                tvPlatformGame.text = data.platforms.toString()
+                tvGenreGame.text = data.genres
+                tvPlatformGame.text = data.platforms
 
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)

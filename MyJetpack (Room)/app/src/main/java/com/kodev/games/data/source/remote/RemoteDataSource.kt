@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RemoteDataSource() {
+class RemoteDataSource {
 
     companion object {
         private const val TAG = "RemoteDataSource"
@@ -22,14 +22,16 @@ class RemoteDataSource() {
             override fun onResponse(call: Call<ResponseGame>, response: Response<ResponseGame>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        responseGame.value = ApiResponse.success(it)
+                        responseGame.value = ApiResponse.Success(it)
                     }
                 } else {
+                    ApiResponse.Error(response.message())
                     Log.d(TAG, "onResponse: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<ResponseGame>, t: Throwable) {
+                ApiResponse.Error("onFailure: ${t.localizedMessage}")
                 Log.d(TAG, "onFailure: ${t.localizedMessage}")
             }
         })

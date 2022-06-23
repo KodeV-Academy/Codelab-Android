@@ -1,5 +1,6 @@
 package com.kodev.games.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kodev.games.data.GameRepository
@@ -12,9 +13,9 @@ class ViewModelFactory private constructor(private val gameRepository: GameRepos
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(): ViewModelFactory =
+        fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideRepository()).apply {
+                instance ?: ViewModelFactory(Injection.provideRepository(context)).apply {
                     instance = this
                 }
             }

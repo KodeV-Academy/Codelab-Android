@@ -3,12 +3,11 @@ package com.kodev.games.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kodev.games.data.source.GameRepository
+import com.kodev.games.data.GameRepository
 import com.kodev.games.di.Injection
 import com.kodev.games.ui.games.GameViewModel
 
-class ViewModelFactory private constructor(private val gameRepository: GameRepository) :
-    ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory private constructor(private val gameRepository: GameRepository) : ViewModelProvider.NewInstanceFactory() {
 
     companion object {
         @Volatile
@@ -23,12 +22,12 @@ class ViewModelFactory private constructor(private val gameRepository: GameRepos
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         when {
             modelClass.isAssignableFrom(GameViewModel::class.java) -> {
                 return GameViewModel(gameRepository) as T
             }
-            else -> throw Throwable("Unkown ViewModel Class: " + modelClass.name)
+            else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
     }
 }
