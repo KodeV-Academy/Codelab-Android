@@ -6,8 +6,8 @@ import retrofit2.http.*
 
 interface ApiService {
     @GET("games")
-    fun getGames(
+    suspend fun getGames(
         @Query("key") key: String,
         @Query("page_size") pageSize: String
-    ): Call<ResponseGame>
+    ): ResponseGame
 }

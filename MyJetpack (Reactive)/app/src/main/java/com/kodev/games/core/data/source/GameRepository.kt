@@ -11,6 +11,8 @@ import com.kodev.games.core.domain.repository.IGameRepository
 import com.kodev.games.utils.AppExecutors
 import com.kodev.games.utils.DataMapper
 import com.kodev.games.utils.DataMapper.mapResponseToEntities
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class GameRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
@@ -35,10 +37,10 @@ class GameRepository private constructor(
             }
     }
 
-    override fun getGames(): LiveData<Resource<List<Game>>> {
-        return object : NetworkBoundResource<List<Game>, ResponseGame>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<Game>> {
-                return Transformations.map(localDataSource.getLocalGames()) {
+    override fun getGames(): Flow<Resource<List<Game>>> {
+        return object : NetworkBoundResource<List<Game>, ResponseGame>() {
+            override fun loadFromDB(): Flow<List<Game>> {
+                return localDataSource.getLocalGames().map {
                     DataMapper.mapEntitiesToDomain(it)
                 }
             }
@@ -47,19 +49,19 @@ class GameRepository private constructor(
                 return data == null || data.isEmpty()
             }
 
-            override fun createCall(): LiveData<ApiResponse<ResponseGame>> {
+            override suspend fun createCall(): Flow<ApiResponse<ResponseGame>> {
                 return remoteDataSource.getGames()
             }
 
-            override fun saveCallResult(data: ResponseGame) {
+            override suspend fun saveCallResult(data: ResponseGame) {
                 val listGame = mapResponseToEntities(data)
                 localDataSource.insertGame(listGame)
             }
-        }.asLiveData()
+        }.asFlow()
     }
 
-    override fun getFavoriteGame(): LiveData<List<Game>> {
-        return Transformations.map(localDataSource.getFavoriteGame()) {
+    override fun getFavoriteGame(): Flow<List<Game>> {
+        return localDataSource.getFavoriteGame().map {
             DataMapper.mapEntitiesToDomain(it)
         }
     }

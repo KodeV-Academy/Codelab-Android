@@ -1,9 +1,8 @@
 package com.kodev.games.core.data.source.local
 
-import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import com.kodev.games.core.data.source.local.entity.GameEntity
 import com.kodev.games.core.data.source.local.room.GamesDao
+import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource private constructor(private val gamesDao: GamesDao) {
 
@@ -14,11 +13,11 @@ class LocalDataSource private constructor(private val gamesDao: GamesDao) {
             INSTANCE ?: LocalDataSource(gamesDao)
     }
 
-    fun getLocalGames(): LiveData<List<GameEntity>> = gamesDao.getLocalGames()
+    fun getLocalGames(): Flow<List<GameEntity>> = gamesDao.getLocalGames()
 
-    fun getFavoriteGame(): LiveData<List<GameEntity>> = gamesDao.getFavoriteGame()
+    fun getFavoriteGame(): Flow<List<GameEntity>> = gamesDao.getFavoriteGame()
 
-    fun insertGame(listGame: List<GameEntity>) = gamesDao.insertGame(listGame)
+    suspend fun insertGame(listGame: List<GameEntity>) = gamesDao.insertGame(listGame)
 
     fun updateGame(game: GameEntity, newState: Boolean) {
         game.favorite = newState
