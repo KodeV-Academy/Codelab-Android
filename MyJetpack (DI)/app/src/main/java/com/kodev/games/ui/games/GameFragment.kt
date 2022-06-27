@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.kodev.games.core.data.source.Resource
 import com.kodev.games.databinding.FragmentGameBinding
 import com.kodev.games.ui.detail.DetailGameActivity
-import com.kodev.games.viewmodel.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameFragment : Fragment() {
 
     private lateinit var binding: FragmentGameBinding
+    private val viewModel: GameViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,9 +28,6 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        val viewModel = ViewModelProvider(this@GameFragment, factory)[GameViewModel::class.java]
 
         val gameAdapter = GameAdapter()
         viewModel.getGames().observe(viewLifecycleOwner) { response ->

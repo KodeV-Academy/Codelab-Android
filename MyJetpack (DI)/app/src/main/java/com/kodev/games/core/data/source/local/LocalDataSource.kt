@@ -4,14 +4,7 @@ import com.kodev.games.core.data.source.local.entity.GameEntity
 import com.kodev.games.core.data.source.local.room.GamesDao
 import kotlinx.coroutines.flow.Flow
 
-class LocalDataSource private constructor(private val gamesDao: GamesDao) {
-
-    companion object {
-        private var INSTANCE: LocalDataSource? = null
-
-        fun getInstance(gamesDao: GamesDao): LocalDataSource =
-            INSTANCE ?: LocalDataSource(gamesDao)
-    }
+class LocalDataSource(private val gamesDao: GamesDao) {
 
     fun getLocalGames(): Flow<List<GameEntity>> = gamesDao.getLocalGames()
 

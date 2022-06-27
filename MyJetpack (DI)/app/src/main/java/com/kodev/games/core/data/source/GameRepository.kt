@@ -1,7 +1,5 @@
 package com.kodev.games.core.data.source
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.kodev.games.core.data.source.local.LocalDataSource
 import com.kodev.games.core.data.source.remote.ApiResponse
 import com.kodev.games.core.data.source.remote.RemoteDataSource
@@ -14,28 +12,12 @@ import com.kodev.games.utils.DataMapper.mapResponseToEntities
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class GameRepository private constructor(
+class GameRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) :
     IGameRepository {
-
-    companion object {
-        @Volatile
-        private var instance: GameRepository? = null
-
-        fun getInstance(
-            remoteData: RemoteDataSource,
-            localData: LocalDataSource,
-            appExecutors: AppExecutors
-        ): GameRepository =
-            instance ?: synchronized(this) {
-                instance ?: GameRepository(remoteData, localData, appExecutors).apply {
-                    instance = this
-                }
-            }
-    }
 
     override fun getGames(): Flow<Resource<List<Game>>> {
         return object : NetworkBoundResource<List<Game>, ResponseGame>() {

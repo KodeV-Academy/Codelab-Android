@@ -3,7 +3,6 @@ package com.kodev.games.ui.detail
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
@@ -13,11 +12,12 @@ import com.kodev.games.core.domain.model.Game
 import com.kodev.games.databinding.ActivityDetailGameBinding
 import com.kodev.games.utils.Support.convertHtmlTagToText
 import com.kodev.games.utils.Support.replaceArrayCode
-import com.kodev.games.viewmodel.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
 class DetailGameActivity : AppCompatActivity() {
 
+    private val viewModel: DetailGameViewModel by viewModel()
     private lateinit var binding: ActivityDetailGameBinding
     private lateinit var data: Game
     private var isFavorite = false
@@ -26,9 +26,6 @@ class DetailGameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val factory = ViewModelFactory.getInstance(this@DetailGameActivity)
-        val viewModel = ViewModelProvider(this@DetailGameActivity, factory)[DetailGameViewModel::class.java]
 
         binding.toolbar.setNavigationOnClickListener {
             this@DetailGameActivity.onBackPressed()
