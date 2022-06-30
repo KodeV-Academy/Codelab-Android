@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyApplication</string>
+    <string name="title_food">Food</string>
+    <string name="title_profile">Profile</string>
+    <string name="image_food">Gambar Makanan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_name">Bulan Suci</string>
+    <string name="my_email">bulansuci1312@gmail.com</string>
+</resources>
