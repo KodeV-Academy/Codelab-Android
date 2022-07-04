@@ -1,7 +1,8 @@
 package com.onedev.mycrud.api.response
 
-object Login {
+object Register {
     data class Request(
+        val name: String,
         val email: String,
         val password: String,
     )

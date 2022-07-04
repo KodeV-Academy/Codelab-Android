@@ -11,15 +11,15 @@ import retrofit2.Response
 
 class LoginViewModel : ViewModel() {
 
-    private var _dataLogin = MutableLiveData<Login.ResponseLogin.DataLogin>()
-    val dataLogin: LiveData<Login.ResponseLogin.DataLogin> = _dataLogin
+    private var _dataLogin = MutableLiveData<Login.Response.Data>()
+    val dataLogin: LiveData<Login.Response.Data> = _dataLogin
 
-    fun login(requestLogin: Login.RequestLogin) {
+    fun login(requestLogin: Login.Request) {
         val client = ApiConfig.getApiService().login(requestLogin)
-        client.enqueue(object : Callback<Login.ResponseLogin> {
+        client.enqueue(object : Callback<Login.Response> {
             override fun onResponse(
-                call: Call<Login.ResponseLogin>,
-                response: Response<Login.ResponseLogin>
+                call: Call<Login.Response>,
+                response: Response<Login.Response>
             ) {
                 if (response.isSuccessful) {
                     _dataLogin.value = response.body()?.data
@@ -28,7 +28,7 @@ class LoginViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<Login.ResponseLogin>, t: Throwable) {
+            override fun onFailure(call: Call<Login.Response>, t: Throwable) {
                 _dataLogin.value = null
             }
         })
