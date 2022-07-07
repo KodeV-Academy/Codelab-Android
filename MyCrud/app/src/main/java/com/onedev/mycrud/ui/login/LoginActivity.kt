@@ -9,6 +9,9 @@ import com.onedev.mycrud.api.response.Login
 import com.onedev.mycrud.databinding.ActivityLoginBinding
 import com.onedev.mycrud.ui.book.BookActivity
 import com.onedev.mycrud.ui.register.RegisterActivity
+import com.onedev.mycrud.utils.Constant
+import com.onedev.mycrud.utils.Support.putBooleanPreference
+import com.onedev.mycrud.utils.Support.putStringPreference
 import com.onedev.mycrud.utils.Support.showToast
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -49,6 +52,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     loginViewModel.dataLogin.observe(this) { response ->
                         if (response != null) {
                             applicationContext.showToast("Login Berhasil")
+                            putStringPreference(applicationContext, Constant.TOKEN, response.id)
+                            putBooleanPreference(applicationContext, Constant.IS_LOGIN, true)
                             startActivity(Intent(applicationContext, BookActivity::class.java))
                             finish()
                         } else {
