@@ -1,9 +1,11 @@
 package com.onedev.mycrud.api.remote
 
+import com.onedev.mycrud.api.response.BooksResponse
 import com.onedev.mycrud.api.response.Login
 import com.onedev.mycrud.api.response.Register
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -17,4 +19,7 @@ interface ApiService {
     fun register(
         @Body requestRegister: Register.Request
     ): Call<Register.Response>
+
+    @GET("v1/book")
+    fun getBooks(): Call<BooksResponse>
 }
