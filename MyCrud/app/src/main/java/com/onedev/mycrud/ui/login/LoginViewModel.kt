@@ -4,31 +4,32 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.onedev.mycrud.api.remote.ApiConfig
-import com.onedev.mycrud.api.response.Login
+import com.onedev.mycrud.api.response.RequestLogin
+import com.onedev.mycrud.api.response.ResponseLogin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginViewModel : ViewModel() {
 
-    private var _dataLogin = MutableLiveData<Login.Response.Data>()
-    val dataLogin: LiveData<Login.Response.Data> = _dataLogin
+    private var _dataLogin = MutableLiveData<ResponseLogin>()
+    val dataLogin: LiveData<ResponseLogin> = _dataLogin
 
-    fun login(requestLogin: Login.Request) {
+    fun login(requestLogin: RequestLogin) {
         val client = ApiConfig.getApiService().login(requestLogin)
-        client.enqueue(object : Callback<Login.Response> {
+        client.enqueue(object : Callback<ResponseLogin> {
             override fun onResponse(
-                call: Call<Login.Response>,
-                response: Response<Login.Response>
+                call: Call<ResponseLogin>,
+                response: Response<ResponseLogin>
             ) {
                 if (response.isSuccessful) {
-                    _dataLogin.value = response.body()?.data
+                    _dataLogin.value = response.body()
                 } else {
                     _dataLogin.value = null
                 }
             }
 
-            override fun onFailure(call: Call<Login.Response>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                 _dataLogin.value = null
             }
         })

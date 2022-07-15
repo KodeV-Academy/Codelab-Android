@@ -1,25 +1,32 @@
 package com.onedev.mycrud.api.remote
 
-import com.onedev.mycrud.api.response.BooksResponse
-import com.onedev.mycrud.api.response.Login
-import com.onedev.mycrud.api.response.Register
+import com.onedev.mycrud.api.response.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
-    @POST("v1/book/login")
+    @POST("user/login")
     fun login(
-        @Body requestLogin: Login.Request
-    ): Call<Login.Response>
+        @Body requestLogin: RequestLogin
+    ): Call<ResponseLogin>
 
-    @POST("v1/book/register")
-    fun register(
-        @Body requestRegister: Register.Request
-    ): Call<Register.Response>
+    @GET("user/listuser")
+    fun listUser(): Call<UserListResponse>
 
-    @GET("v1/book")
-    fun getBooks(): Call<BooksResponse>
+    @POST("user/createuser")
+    fun addUser(
+        @Body requestAddUser: RequestAddUser
+    ): Call<ResponseAdduUser>
+
+    @PATCH("user/{id}")
+    fun updateUser(
+        @Path("id") id: String,
+        @Body requestEditUser: RequestEditUser
+    ): Call<ResponseEditUser>
+
+    @DELETE("user/{id}")
+    fun deleteUser(
+        @Path("id") id: String
+    ): Call<ResponseDeleteUser>
 }

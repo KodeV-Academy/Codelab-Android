@@ -13,7 +13,7 @@ object ApiConfig {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://rest-api-library-kotlin-spring.herokuapp.com/")
+            .baseUrl("http://api.syntax.co.id/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

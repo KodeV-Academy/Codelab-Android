@@ -7,9 +7,16 @@
 
     <fragment
         android:id="@+id/bookFragment"
-        android:name="com.onedev.mycrud.ui.main.BookFragment"
+        android:name="com.onedev.mycrud.ui.main.UserFragment"
         android:label="fragment_book"
-        tools:layout="@layout/fragment_book" />
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_bookFragment_to_detailUserFragment"
+            app:destination="@id/detailUserFragment" />
+        <action
+            android:id="@+id/action_bookFragment_to_addUserFragment"
+            app:destination="@id/addUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myBookFragment"
         android:name="com.onedev.mycrud.ui.main.MyBookFragment"
@@ -20,4 +27,36 @@
         android:name="com.onedev.mycrud.ui.main.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.onedev.mycrud.ui.main.EditUserFragment"
+        android:label="EditUserFragment"
+        tools:layout="@layout/fragment_edit_user">
+        <argument
+            android:name="dataUser"
+            app:argType="com.onedev.mycrud.api.response.UserListResponse$Data" />
+        <action
+            android:id="@+id/action_editUserFragment_to_bookFragment"
+            app:destination="@id/bookFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/bookFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailUserFragment"
+        android:name="com.onedev.mycrud.ui.main.DetailUserFragment"
+        android:label="fragment_detail_user"
+        tools:layout="@layout/fragment_detail_user" >
+        <action
+            android:id="@+id/action_detailUserFragment_to_editUserFragment"
+            app:destination="@id/editUserFragment" />
+        <argument
+            android:name="dataUser"
+            app:argType="com.onedev.mycrud.api.response.UserListResponse$Data" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.onedev.mycrud.ui.main.AddUserFragment"
+        android:label="AddUserFragment"
+        tools:layout="@layout/fragment_add_user"  />
 </navigation>

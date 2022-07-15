@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.onedev.mycrud.api.response.Login
+import com.onedev.mycrud.api.response.RequestLogin
 import com.onedev.mycrud.databinding.ActivityLoginBinding
 import com.onedev.mycrud.ui.book.BookActivity
-import com.onedev.mycrud.ui.register.RegisterActivity
 import com.onedev.mycrud.utils.Constant
 import com.onedev.mycrud.utils.Support.putBooleanPreference
 import com.onedev.mycrud.utils.Support.putStringPreference
@@ -25,15 +24,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener(this)
-        binding.tvRegister.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v) {
-            binding.tvRegister -> {
-                startActivity(Intent(applicationContext, RegisterActivity::class.java))
-            }
-
             binding.btnLogin -> {
                 val email = binding.edtEmail.text.toString()
                 val password = binding.edtPassword.text.toString()
@@ -46,13 +40,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.btnLogin.visibility = View.GONE
 
-                    val requestLogin = Login.Request(email, password)
+                    val requestLogin = RequestLogin(email, password)
                     loginViewModel.login(requestLogin)
-
                     loginViewModel.dataLogin.observe(this) { response ->
                         if (response != null) {
                             applicationContext.showToast("Login Berhasil")
-                            putStringPreference(applicationContext, Constant.TOKEN, response.id)
+                            putStringPreference(applicationContext, Constant.TOKEN, response.data?.id.toString())
                             putBooleanPreference(applicationContext, Constant.IS_LOGIN, true)
                             startActivity(Intent(applicationContext, BookActivity::class.java))
                             finish()
