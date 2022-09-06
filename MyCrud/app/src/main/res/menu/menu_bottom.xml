@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/bookFragment"
-        android:icon="@drawable/ic_baseline_library_books"
-        android:title="@string/book"
+        android:icon="@drawable/ic_baseline_person"
+        android:title="@string/user"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/myBookFragment"
-        android:icon="@drawable/ic_baseline_menu_book"
-        android:title="@string/my_book"
+        android:icon="@drawable/ic_baseline_customer"
+        android:title="@string/customer"
         app:showAsAction="ifRoom" />
 
     <item

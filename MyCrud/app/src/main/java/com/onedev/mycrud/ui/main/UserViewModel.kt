@@ -22,6 +22,9 @@ class UserViewModel : ViewModel() {
     private val _statusAddUser = MutableLiveData<String>()
     val statusAddUser = _statusAddUser
 
+    private val _responseListCustomer = MutableLiveData<List<ResponseCustomerList.Data>>()
+    val responseListCustomer = _responseListCustomer
+
     fun getUsers() {
         val client = ApiConfig.getApiService().listUser()
         client.enqueue(object : Callback<UserListResponse> {
@@ -93,6 +96,27 @@ class UserViewModel : ViewModel() {
 
             override fun onFailure(call: Call<ResponseAdduUser>, t: Throwable) {
                 _statusAddUser.value = null
+            }
+
+        })
+    }
+
+    fun getCustomers() {
+        val client = ApiConfig.getApiService().listCustomer()
+        client.enqueue(object : Callback<ResponseCustomerList> {
+            override fun onResponse(
+                call: Call<ResponseCustomerList>,
+                response: Response<ResponseCustomerList>
+            ) {
+                if (response.isSuccessful) {
+                    _responseListCustomer.value = response.body()?.data
+                } else {
+                    _responseListCustomer.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseCustomerList>, t: Throwable) {
+                _responseListCustomer.value = null
             }
 
         })

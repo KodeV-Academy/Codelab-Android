@@ -12,11 +12,13 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_add_user.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/fragment_book.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout/fragment_customer.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/fragment_detail_user.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_user.xml" value="0.25277777777777777" />
         <entry key="app/src/main/res/layout/fragment_my_book.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/fragment_user.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_list_book.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout/layout_list_customer.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/layout_list_user.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/menu/menu_bottom.xml" value="0.21354166666666666" />
       </map>

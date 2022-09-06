@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/myBookFragment"
-        android:name="com.onedev.mycrud.ui.main.MyBookFragment"
+        android:name="com.onedev.mycrud.ui.main.CustomerFragment"
         android:label="fragment_my_book"
-        tools:layout="@layout/fragment_my_book" />
+        tools:layout="@layout/fragment_customer" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.onedev.mycrud.ui.main.ProfileFragment"

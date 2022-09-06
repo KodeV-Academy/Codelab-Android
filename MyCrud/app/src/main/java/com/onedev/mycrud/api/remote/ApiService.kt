@@ -29,4 +29,7 @@ interface ApiService {
     fun deleteUser(
         @Path("id") id: String
     ): Call<ResponseDeleteUser>
+
+    @GET("costumer/listcostumer/")
+    fun listCustomer() : Call<ResponseCustomerList>
 }
